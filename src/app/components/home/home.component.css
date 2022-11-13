@@ -1,0 +1,5 @@
+.inicio{
+    background-image: url('../../../assets/img/home.jpg');
+    min-height:800px;
+    background-size: cover;
+}
