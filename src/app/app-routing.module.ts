@@ -5,6 +5,7 @@ import { ListadoEmpleadosComponent } from './components/empleados/listado-emplea
 import { HomeComponent } from './components/home/home.component';
 import { AltaReciboComponent } from './components/recibos/alta-recibo/alta-recibo.component';
 import { ListarRecibosComponent } from './components/recibos/listar-recibos/listar-recibos.component';
+import { ReporteSueldosNetosComponent } from './components/recibos/reporte-sueldos-netos/reporte-sueldos-netos.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'empleados/nuevo', component: AltaEmpleadoComponent },
   { path: 'recibos/listado', component: ListarRecibosComponent },
   { path: 'recibos/nuevo', component: AltaReciboComponent },
+  { path: 'recibos/reporte', component: ReporteSueldosNetosComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

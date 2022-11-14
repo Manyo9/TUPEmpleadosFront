@@ -15,6 +15,7 @@ import { AltaEmpleadoComponent } from './components/empleados/alta-empleado/alta
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListarRecibosComponent } from './components/recibos/listar-recibos/listar-recibos.component';
 import { AltaReciboComponent } from './components/recibos/alta-recibo/alta-recibo.component';
+import { ReporteSueldosNetosComponent } from './components/recibos/reporte-sueldos-netos/reporte-sueldos-netos.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AltaReciboComponent } from './components/recibos/alta-recibo/alta-recib
     ListadoEmpleadosComponent,
     AltaEmpleadoComponent,
     ListarRecibosComponent,
-    AltaReciboComponent
+    AltaReciboComponent,
+    ReporteSueldosNetosComponent
   ],
   imports: [
     BrowserModule,
