@@ -13,6 +13,8 @@ import { ReciboService } from './services/recibo.service';
 import { ListadoEmpleadosComponent } from './components/empleados/listado-empleados/listado-empleados.component';
 import { AltaEmpleadoComponent } from './components/empleados/alta-empleado/alta-empleado.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListarRecibosComponent } from './components/recibos/listar-recibos/listar-recibos.component';
+import { AltaReciboComponent } from './components/recibos/alta-recibo/alta-recibo.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     NavbarComponent,
     ListadoEmpleadosComponent,
-    AltaEmpleadoComponent
+    AltaEmpleadoComponent,
+    ListarRecibosComponent,
+    AltaReciboComponent
   ],
   imports: [
     BrowserModule,
