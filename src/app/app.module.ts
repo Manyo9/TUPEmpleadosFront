@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { EmpleadoService } from './services/empleado.service';
 import { ReciboService } from './services/recibo.service';
 import { ListadoEmpleadosComponent } from './components/empleados/listado-empleados/listado-empleados.component';
+import { AltaEmpleadoComponent } from './components/empleados/alta-empleado/alta-empleado.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ListadoEmpleadosComponent } from './components/empleados/listado-emplea
     HomeComponent,
     HeaderComponent,
     NavbarComponent,
-    ListadoEmpleadosComponent
+    ListadoEmpleadosComponent,
+    AltaEmpleadoComponent
   ],
   imports: [
     BrowserModule,
