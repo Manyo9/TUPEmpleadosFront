@@ -22,8 +22,8 @@ export class ReporteSueldosNetosComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
-      mes: [, Validators.required],
-      anio: [, Validators.required]
+      mes: [, [Validators.required, Validators.min(1), Validators.max(12)]],
+      anio: [, [Validators.required, Validators.min(1970)]]
     })
   }
 
