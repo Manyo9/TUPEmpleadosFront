@@ -8,10 +8,13 @@
                 <div class="col-sm-3">
                     <label class="form-label" for='legajo'>Legajo a buscar:</label>
                     <input type='number' id='legajo' class='form-control' formControlName="legajo"
-                        [class.is-invalid]="controlLegajo.touched && controlLegajo.hasError('required')">
+                        [class.is-invalid]="controlLegajo.touched && (controlLegajo.hasError('required') || controlLegajo.hasError('min'))">
                     
                     <div *ngIf="controlLegajo.touched && controlLegajo.hasError('required')" class="invalid-feedback">
                         Ingrese un legajo.
+                    </div>
+                    <div *ngIf="controlLegajo.touched && controlLegajo.hasError('min')" class="invalid-feedback">
+                        Ingrese un legajo válido.
                     </div>
                 </div>
                 <div class="col-sm-3">

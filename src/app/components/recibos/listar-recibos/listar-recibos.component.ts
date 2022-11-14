@@ -22,13 +22,13 @@ export class ListarRecibosComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
-      legajo: [, Validators.required]
+      legajo: [, [Validators.required, Validators.min(1)]]
     })
   }
 
   buscar(): void {
     if(this.formulario.invalid){
-      swal({ title: 'Atención!', text: `Ingresá un legajo antes de buscar.`, icon: 'warning' });
+      swal({ title: 'Atención!', text: `Revisá el legajo antes de buscar.`, icon: 'warning' });
       return;
     }
     this.$listadoRecibos =  this.empleadoService.obtenerRecibosPorLegajo(this.valueLegajo);

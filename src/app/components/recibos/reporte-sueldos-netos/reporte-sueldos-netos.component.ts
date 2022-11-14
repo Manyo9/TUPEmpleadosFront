@@ -29,7 +29,7 @@ export class ReporteSueldosNetosComponent implements OnInit {
 
   generar(): void {
     if(this.formulario.invalid){
-      swal({ title: 'Atención!', text: `Completá los parámetros antes de generar`, icon: 'warning' });
+      swal({ title: 'Atención!', text: `Revisá los parámetros antes de generar`, icon: 'warning' });
       return;
     }
     this.$reporte =  this.reciboService.obtenerReporte(this.valueAnio, this.valueMes);
