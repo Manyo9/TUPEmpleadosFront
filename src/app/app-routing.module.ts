@@ -4,8 +4,9 @@ import { ListadoEmpleadosComponent } from './components/empleados/listado-emplea
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  {path : 'home',component : HomeComponent},
-  {path : 'empleados/listado', component: ListadoEmpleadosComponent}
+  { path: 'home', component: HomeComponent },
+  { path: 'empleados/listado', component: ListadoEmpleadosComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
