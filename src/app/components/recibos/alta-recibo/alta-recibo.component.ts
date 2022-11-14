@@ -26,14 +26,14 @@ export class AltaReciboComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
-      legajoEmpleado: [, Validators.required],
-      mes: [, Validators.required],
-      anio: [, Validators.required],
-      sueldoBruto: [, [Validators.required]],
-      incrementoAntiguedad: [, Validators.required],
-      dedJubilacion:[, Validators.required],
-      dedObraSocial: [, Validators.required],
-      dedFondoAltaCompl:[, Validators.required]
+      legajoEmpleado: [, [Validators.required, Validators.min(1)]],
+      mes: [, [Validators.required, Validators.min(1), Validators.max(12)]],
+      anio: [, [Validators.required, Validators.min(1901)]],
+      sueldoBruto: [, [Validators.required, Validators.min(1), Validators.max(9000000)]],
+      incrementoAntiguedad: [, [Validators.required, Validators.min(1), Validators.max(99999.99)]],
+      dedJubilacion:[, [Validators.required, Validators.min(1), Validators.max(99999.99)]],
+      dedObraSocial: [, [Validators.required, Validators.min(1), Validators.max(99999.99)]],
+      dedFondoAltaCompl:[, [Validators.required, Validators.min(1), Validators.max(99999.99)]]
     })
   }
 

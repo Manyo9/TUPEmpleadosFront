@@ -33,8 +33,8 @@
                     <div *ngIf="controlAnio.touched && controlAnio.hasError('required')" class="invalid-feedback">
                         Ingrese un año.
                     </div>
-                    <div *ngIf="controlAnio.hasError('min')" class="invalid-feedback">
-                        Ingrese un año mayor a 1970.
+                    <div *ngIf="controlAnio.touched && controlAnio.hasError('min')" class="invalid-feedback">
+                        Ingrese un año mayor a 1900.
                     </div>
                 </div>
                 <div class="col-sm-3">
