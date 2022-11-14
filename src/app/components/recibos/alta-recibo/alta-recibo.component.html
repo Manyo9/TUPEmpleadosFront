@@ -1,1 +1,87 @@
-<p>alta-recibo works!</p>
+<div class="container py-5">
+    <h1 class="display-5">Nuevo recibo</h1>
+    <form [formGroup]="formulario">
+        <div class="form-group">
+            <div class="row mb-5">
+                <div class="col-md-4">
+                    <label for="legajoEmpleado" class="form-label">Legajo</label>
+                    <input type="number" class="form-control" id="legajoEmpleado" formControlName="legajoEmpleado"
+                        [class.is-invalid]="controlLegajo.touched && controlLegajo.hasError('required')">
+                    <span *ngIf="controlLegajo.touched && controlLegajo.hasError('required')" class="invalid-feedback">
+                        Ingrese un legajo.
+                    </span>
+                </div>
+                <div class="col-md-4">
+                    <label for="mes" class="form-label">Mes</label>
+                    <input type="number" class="form-control" id="mes" formControlName="mes"
+                        [class.is-invalid]="controlMes.touched && controlMes.hasError('required')">
+                    <span *ngIf="controlMes.touched && controlMes.hasError('required')" class="invalid-feedback">
+                        Ingrese un mes.
+                    </span>
+                </div>
+                <div class="col-md-4">
+                    <label for="anio" class="form-label">Año</label>
+                    <input type="number" class="form-control" id="anio" formControlName="anio"
+                        [class.is-invalid]="controlAnio.touched && controlAnio.hasError('required')">
+                    <span *ngIf="controlAnio.touched && controlAnio.hasError('required')" class="invalid-feedback">
+                        Ingrese un año.
+                    </span>
+                </div>
+               
+
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <label class="form-label" for="sueldoBruto">Sueldo Bruto</label>
+                    <input type="number" id="sueldoBruto" class="form-control" formControlName="sueldoBruto"
+                        [class.is-invalid]="controlSueldo.touched && controlSueldo.hasError('required')">
+                    <div *ngIf="controlSueldo.touched && controlSueldo.hasError('required')" class="invalid-feedback">
+                        Ingrese un sueldo bruto.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="incrementoAntiguedad">Incremento por Antigüedad</label>
+                    <input type="number" id="incrementoAntiguedad" class="form-control"
+                        formControlName="incrementoAntiguedad"
+                        [class.is-invalid]="controlIncrementoAntiguedad.touched && controlIncrementoAntiguedad.hasError('required')">
+                    <div *ngIf="controlIncrementoAntiguedad.touched && controlIncrementoAntiguedad.hasError('required')"
+                        class="invalid-feedback">
+                        Ingrese un Incremento por Antigüedad.
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-4">
+                    <label class="form-label" for="dedJubilacion">Deducción por jubilación</label>
+                    <input type="number" id="dedJubilacion" class="form-control" formControlName="dedJubilacion"
+                        [class.is-invalid]="controlDedJubilacion.touched && controlDedJubilacion.hasError('required')">
+                    <div *ngIf="controlDedJubilacion.touched && controlDedJubilacion.hasError('required')"
+                        class="invalid-feedback">
+                        Ingrese una deducción por jubilación.
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="dedObraSocial">Deducción por obra social</label>
+                    <input type="number" id="dedObraSocial" class="form-control" formControlName="dedObraSocial"
+                        [class.is-invalid]="controlDedObraSocial.touched && controlDedObraSocial.hasError('required')">
+                    <div *ngIf="controlDedObraSocial.touched && controlDedObraSocial.hasError('required')"
+                        class="invalid-feedback">
+                        Ingrese una deducción por obra social.
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="dedFondoAltaCompl">Deducción por fondo de alta complejidad</label>
+                    <input type="number" id="dedFondoAltaCompl" class="form-control" formControlName="dedFondoAltaCompl"
+                        [class.is-invalid]="controlDedFondoAltaCompl.touched && controlDedFondoAltaCompl.hasError('required')">
+                    <div *ngIf="controlDedFondoAltaCompl.touched && controlDedFondoAltaCompl.hasError('required')"
+                        class="invalid-feedback">
+                        Ingrese una deducción por fondo de alta complejidad.
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success" (click)="guardar()">Guardar</button>
+            <button type="button" class="btn btn-danger ms-3" (click)="volver()">Cancelar</button>
+        </div>
+    </form>
+</div>
