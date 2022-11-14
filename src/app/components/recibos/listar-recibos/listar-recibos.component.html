@@ -1,1 +1,52 @@
-<p>listar-recibos works!</p>
+<div class="container">
+    <h1 class="display-4 my-3">
+        Listado Pedidos
+    </h1>
+    <form [formGroup]="formulario">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label class="form-label" for='legajo'>Legajo a buscar:</label>
+                    <input type='number' id='legajo' class='form-control' formControlName="legajo"
+                        [class.is-invalid]="controlLegajo.touched && controlLegajo.hasError('required')">
+                    
+                    <div *ngIf="controlLegajo.touched && controlLegajo.hasError('required')" class="invalid-feedback">
+                        Ingrese un legajo.
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <br>
+                    <button class="btn btn-primary p-2 bd-highlight align-self-center" (click)="buscar()">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+            <tr class="">
+                <th scope="col">Nro Recibo</th>
+                <th scope="col">Mes</th>
+                <th scope="col">Año</th>
+                <th scope="col">Sueldo Bruto</th>
+                <th scope="col">Incremento (antig.)</th>
+                <th scope="col">Deduc. Jubil.</th>
+                <th scope="col">Deduc. Obra Soc.</th>
+                <th scope="col">Deduc. Fondo AC</th>
+                <th scope="col">Sueldo bruto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of listadoRecibos">
+                <th scope="row">{{r.nroRecibo ? r.nroRecibo : '-' }}</th>
+                <td>{{r.mes}}</td>
+                <td>{{r.anio}}</td>
+                <td>{{r.sueldoBruto | currency: 'USD'}}</td>
+                <td>{{r.incrementoAntiguedad | currency: 'USD'}}</td>
+                <td>{{r.dedJubilacion | currency: 'USD'}}</td>
+                <td>{{r.dedObraSocial | currency: 'USD'}}</td>
+                <td>{{r.dedFondoAltaCompl | currency: 'USD'}}</td>
+                <td>{{r.sueldoNeto | currency: 'USD'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
