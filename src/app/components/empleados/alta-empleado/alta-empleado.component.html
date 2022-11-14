@@ -1,4 +1,68 @@
-<div class="container">
-    <p>alta-empleado works!</p>
+<div class="container py-5">
+    <h1 class="display-5">Nuevo empleado</h1>
+    <form [formGroup]="formulario">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" formControlName="nombre"
+                        [class.is-invalid]="controlNombre.touched && controlNombre.hasError('required')">
+                    <span *ngIf="controlNombre.touched && controlNombre.hasError('required')" class="invalid-feedback">
+                        Ingrese un nombre.
+                    </span>
+                </div>
+                <div class="col-md-4">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" formControlName="apellido"
+                        [class.is-invalid]="controlApellido.touched && controlApellido.hasError('required')">
+                    <span *ngIf="controlApellido.touched && controlApellido.hasError('required')"
+                        class="invalid-feedback">
+                        Ingrese un apellido.
+                    </span>
+                </div>
+                <div class="col-md-4">
+                    <label for="selectArea" class="form-label">Area</label>
+                    <select id="selectArea" class="form-select" formControlName="area"
+                        [class.is-invalid]="controlArea.touched && controlArea.hasError('required')">
+                        <option>Administacion</option>
+                        <option>RRHH</option>
+                        <option>Sistemas</option>
+                    </select>
+                    <span class="invalid-feedback">
+                        Ingrese el área a la que pertenece el empleado.
+                    </span>
+                </div>
+            </div>
+            <div class="row py-5">
+                <div class="col-md-4">
+                    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento"
+                        [class.is-invalid]="controlFechaNacimiento.touched && controlFechaNacimiento.hasError('required')">
+                    <div *ngIf="controlFechaNacimiento.touched && controlFechaNacimiento.hasError('required')"
+                        class="invalid-feedback">
+                        Ingrese la fecha de nacimiento.
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="fechaIngreso" class="form-label">Fecha de Ingeso</label>
+                    <input type="date" class="form-control" id="fechaIngreso" formControlName="fechaIngreso"
+                        [class.is-invalid]="controlFechaIngreso.touched && controlFechaIngreso.hasError('required')">
+                    <div *ngIf="controlFechaIngreso.touched && controlFechaIngreso.hasError('required')"
+                        class="invalid-feedback">
+                        Ingrese la fecha de ingreso.
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="sueldoBruto">Sueldo Bruto</label>
+                    <input type="number" id="sueldoBruto" class="form-control" formControlName="sueldoBruto"
+                        [class.is-invalid]="controlSueldo.touched && controlSueldo.hasError('required')">
+                    <div *ngIf="controlSueldo.touched && controlSueldo.hasError('required')" class="invalid-feedback">
+                        Ingrese un sueldo.
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success" (click)="guardar()">Guardar</button>
+            <button type="button" class="btn btn-danger ms-3" (click)="volver()">Cancelar</button>
+        </div>
+    </form>
 </div>
-
