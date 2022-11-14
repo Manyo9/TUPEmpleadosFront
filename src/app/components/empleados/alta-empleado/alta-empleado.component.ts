@@ -3,6 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EmpleadoService } from '../../../services/empleado.service'
+import { SweetAlert } from 'sweetalert/typings/core';
+import { EmpleadoPostDTO } from 'src/app/models/EmpleadoPostDTO';
+const swal: SweetAlert = require('sweetalert');
 
 @Component({
   selector: 'app-alta-empleado',
@@ -13,6 +16,7 @@ export class AltaEmpleadoComponent implements OnInit, OnDestroy {
 
   formulario: FormGroup;
   subscription: Subscription = new Subscription();
+  empleado: EmpleadoPostDTO;
   constructor(
     private formBuilder: FormBuilder,
     private empleadoService: EmpleadoService,
@@ -35,9 +39,22 @@ export class AltaEmpleadoComponent implements OnInit, OnDestroy {
   }
 
   guardar(): void {
-    alert("To do");
+    if (this.formulario.invalid) {
+      swal({ title: 'Atención!', text: `Revise y complete todos los campos!`, icon: 'warning' });
+      return;
+    }
+    this.empleado = this.formulario.value as EmpleadoPostDTO;
+    this.subscription.add(
+      this.empleadoService.registrar(this.empleado).subscribe({
+        next: () => {
+           swal({ title: 'Listo!', text: `Se registró el empleado correctamente`, icon: 'success' });
+           this.router.navigate(['empleados/listado']);
+        },
+        error: (e) => { swal({ title: 'Error!', text: e, icon: 'error' }); }
+      })
+    )
   }
-  
+
   volver(): void {
     this.router.navigate(['empleados/listado']);
   }
