@@ -12,6 +12,7 @@ import { EmpleadoService } from './services/empleado.service';
 import { ReciboService } from './services/recibo.service';
 import { ListadoEmpleadosComponent } from './components/empleados/listado-empleados/listado-empleados.component';
 import { AltaEmpleadoComponent } from './components/empleados/alta-empleado/alta-empleado.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AltaEmpleadoComponent } from './components/empleados/alta-empleado/alta
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     EmpleadoService,
