@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { ReciboReporteDTO } from 'src/app/models/ReciboReporteDTO';
+import { ReciboService } from 'src/app/services/recibo.service';
+import { SweetAlert } from 'sweetalert/typings/core';
+const swal: SweetAlert = require('sweetalert');
 
 @Component({
   selector: 'app-reporte-sueldos-netos',
@@ -7,9 +13,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReporteSueldosNetosComponent implements OnInit {
 
-  constructor() { }
+  formulario: FormGroup;
+  $reporte: Observable<ReciboReporteDTO[]>;
+  constructor(
+    private reciboService : ReciboService,
+    private formBuilder : FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      mes: [, Validators.required],
+      anio: [, Validators.required]
+    })
+  }
+
+  generar(): void {
+    if(this.formulario.invalid){
+      swal({ title: 'Atención!', text: `Completá los parámetros antes de generar`, icon: 'warning' });
+      return;
+    }
+    this.$reporte =  this.reciboService.obtenerReporte(this.valueAnio, this.valueMes);
+  }
+  
+  get controlMes(): FormControl {
+    return this.formulario.controls['mes'] as FormControl;
+  }
+
+  get controlAnio(): FormControl {
+    return this.formulario.controls['anio'] as FormControl;
+  }
+
+  get valueMes(): number {
+    return this.formulario.get('mes')?.value;
+  }
+
+  get valueAnio(): number {
+    return this.formulario.get('anio')?.value;
   }
 
 }
