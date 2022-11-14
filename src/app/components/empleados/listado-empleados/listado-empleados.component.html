@@ -22,7 +22,7 @@
       <td>{{ e.apellido }}</td>
       <td>{{ e.fechaNacimiento }}</td>
       <td>{{ e.antiguedad }}</td>
-      <td>{{ e.sueldoBruto }}</td>
+      <td>{{ e.sueldoBruto | currency: 'USD' }}</td>
     </tr>
   </tbody>
 </table>
