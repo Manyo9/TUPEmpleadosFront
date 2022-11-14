@@ -54,7 +54,7 @@ export class AltaReciboComponent implements OnInit, OnDestroy {
       this.reciboService.registrar(this.recibo).subscribe({
         next: () => {
            swal({ title: 'Listo!', text: `Se registró el recibo correctamente`, icon: 'success' });
-           this.router.navigate(['empleados/listado']);
+           this.router.navigate(['recibos/listado']);
         },
         error: (e) => { swal({ title: 'Error!', text: e, icon: 'error' }); }
       })
