@@ -8,6 +8,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { EmpleadoService } from './services/empleado.service';
+import { ReciboService } from './services/recibo.service';
+import { ListadoEmpleadosComponent } from './components/empleados/listado-empleados/listado-empleados.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +18,18 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HeaderComponent,
     HomeComponent,
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    ListadoEmpleadosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    EmpleadoService,
+    ReciboService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
