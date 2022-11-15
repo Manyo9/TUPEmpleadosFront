@@ -60,7 +60,9 @@ export class AltaReciboComponent implements OnInit, OnDestroy {
            swal({ title: 'Listo!', text: `Se registró el recibo correctamente`, icon: 'success' });
            this.router.navigate(['recibos/listado']);
         },
-        error: (e) => { swal({ title: 'Error!', text: e, icon: 'error' }); }
+        error: (e) => { 
+          console.log(e);
+          swal({ title: 'Error!', text: `${e.error.error}: ${e.message}`, icon: 'error' }); }
       })
     )
   }
