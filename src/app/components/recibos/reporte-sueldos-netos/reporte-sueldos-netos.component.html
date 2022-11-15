@@ -34,7 +34,7 @@
                         Ingrese un año.
                     </div>
                     <div *ngIf="controlAnio.touched && controlAnio.hasError('min')" class="invalid-feedback">
-                        Ingrese un año mayor a 1900.
+                        Ingrese un año mayor a {{ MIN_ANIO - 1 }}.
                     </div>
                 </div>
                 <div class="col-sm-3">

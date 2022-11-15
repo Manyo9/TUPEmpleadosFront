@@ -43,7 +43,7 @@
                         Ingrese un año.
                     </div>
                     <div *ngIf="controlAnio.touched && controlAnio.hasError('min')" class="invalid-feedback">
-                        Ingrese un año mayor a 1900.
+                        Ingrese un año mayor a {{ MIN_ANIO - 1 }}.
                     </div>
                 </div>
 
@@ -53,13 +53,14 @@
                 <div class="col-md-6">
                     <label class="form-label" for="sueldoBruto">Sueldo Bruto</label>
                     <input type="number" id="sueldoBruto" class="form-control" formControlName="sueldoBruto"
-                        [class.is-invalid]="controlSueldo.touched && (controlSueldo.hasError('required') || controlSueldo.hasError('min') || controlSueldo.hasError('max'))">
+                        [class.is-invalid]="controlSueldo.touched &&
+                        (controlSueldo.hasError('required') || controlSueldo.hasError('min') || controlSueldo.hasError('max'))">
                     <div *ngIf="controlSueldo.touched && controlSueldo.hasError('required')" class="invalid-feedback">
                         Ingrese un sueldo bruto.
                     </div>
                     <div *ngIf="controlSueldo.touched && (controlSueldo.hasError('min') || controlSueldo.hasError('max'))"
                         class="invalid-feedback">
-                        Ingrese un sueldo bruto entre 1 y 9000000.
+                        Ingrese un sueldo bruto entre 1 y {{ MAX_SUELDO }}.
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -75,7 +76,7 @@
                     <div *ngIf="controlIncrementoAntiguedad.touched && 
                     (controlIncrementoAntiguedad.hasError('min') || controlIncrementoAntiguedad.hasError('max'))"
                         class="invalid-feedback">
-                        Ingrese un valor entre 1 y 99999.99.
+                        Ingrese un valor entre 1 y {{ MAX_DEDUCCION }}.
                     </div>
 
                 </div>
@@ -95,7 +96,7 @@
                     <div *ngIf="controlDedJubilacion.touched && 
                     (controlDedJubilacion.hasError('min') || controlDedJubilacion.hasError('max'))"
                         class="invalid-feedback">
-                        Ingrese un valor entre 1 y 99999.99.
+                        Ingrese un valor entre 1 y {{ MAX_DEDUCCION }}.
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -111,7 +112,7 @@
                     <div *ngIf="controlDedObraSocial.touched && 
                     (controlDedObraSocial.hasError('min') || controlDedObraSocial.hasError('max'))"
                         class="invalid-feedback">
-                        Ingrese un valor entre 1 y 99999.99.
+                        Ingrese un valor entre 1 y {{ MAX_DEDUCCION }}.
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -127,7 +128,7 @@
                     <div *ngIf="controlDedFondoAltaCompl.touched && 
                     (controlDedFondoAltaCompl.hasError('min') || controlDedFondoAltaCompl.hasError('max'))"
                         class="invalid-feedback">
-                        Ingrese un valor entre 1 y 99999.99.
+                        Ingrese un valor entre 1 y {{ MAX_DEDUCCION }}.
                     </div>
                 </div>
             </div>

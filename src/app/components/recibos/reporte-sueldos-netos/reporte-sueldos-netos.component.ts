@@ -15,6 +15,8 @@ export class ReporteSueldosNetosComponent implements OnInit {
 
   formulario: FormGroup;
   $reporte: Observable<ReciboReporteDTO[]>;
+  readonly MIN_ANIO: number = 1901;
+
   constructor(
     private reciboService : ReciboService,
     private formBuilder : FormBuilder

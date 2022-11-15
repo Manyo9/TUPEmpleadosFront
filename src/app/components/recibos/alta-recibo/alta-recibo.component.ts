@@ -18,6 +18,10 @@ export class AltaReciboComponent implements OnInit, OnDestroy {
   formulario: FormGroup;
   subscription: Subscription = new Subscription();
   recibo: Recibo;
+  readonly MAX_SUELDO: number = 9000000000.00
+  readonly MAX_DEDUCCION: number = 999999999.99
+  readonly MIN_ANIO: number = 1901
+
   constructor(
     private formBuilder: FormBuilder,
     private reciboService: ReciboService,
@@ -28,12 +32,12 @@ export class AltaReciboComponent implements OnInit, OnDestroy {
     this.formulario = this.formBuilder.group({
       legajoEmpleado: [, [Validators.required, Validators.min(1)]],
       mes: [, [Validators.required, Validators.min(1), Validators.max(12)]],
-      anio: [, [Validators.required, Validators.min(1901)]],
-      sueldoBruto: [, [Validators.required, Validators.min(1), Validators.max(9000000)]],
-      incrementoAntiguedad: [, [Validators.required, Validators.min(1), Validators.max(99999.99)]],
-      dedJubilacion:[, [Validators.required, Validators.min(1), Validators.max(99999.99)]],
-      dedObraSocial: [, [Validators.required, Validators.min(1), Validators.max(99999.99)]],
-      dedFondoAltaCompl:[, [Validators.required, Validators.min(1), Validators.max(99999.99)]]
+      anio: [, [Validators.required, Validators.min(this.MIN_ANIO)]],
+      sueldoBruto: [, [Validators.required, Validators.min(1), Validators.max(this.MAX_SUELDO)]],
+      incrementoAntiguedad: [, [Validators.required, Validators.min(1), Validators.max(this.MAX_DEDUCCION)]],
+      dedJubilacion:[, [Validators.required, Validators.min(1), Validators.max(this.MAX_DEDUCCION)]],
+      dedObraSocial: [, [Validators.required, Validators.min(1), Validators.max(this.MAX_DEDUCCION)]],
+      dedFondoAltaCompl:[, [Validators.required, Validators.min(1), Validators.max(this.MAX_DEDUCCION)]]
     })
   }
 

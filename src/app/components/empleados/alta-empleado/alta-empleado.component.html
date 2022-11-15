@@ -55,9 +55,14 @@
                 <div class="col-md-4">
                     <label class="form-label" for="sueldoBruto">Sueldo Bruto</label>
                     <input type="number" id="sueldoBruto" class="form-control" formControlName="sueldoBruto"
-                        [class.is-invalid]="controlSueldo.touched && controlSueldo.hasError('required')">
+                        [class.is-invalid]="controlSueldo.touched &&
+                        (controlSueldo.hasError('required') || controlSueldo.hasError('min') || controlSueldo.hasError('max'))">
                     <div *ngIf="controlSueldo.touched && controlSueldo.hasError('required')" class="invalid-feedback">
                         Ingrese un sueldo.
+                    </div>
+                    <div *ngIf="controlSueldo.touched && (controlSueldo.hasError('min') || controlSueldo.hasError('max'))"
+                        class="invalid-feedback">
+                        Ingrese un sueldo bruto entre 1 y {{ MAX_SUELDO }}.
                     </div>
                 </div>
             </div>

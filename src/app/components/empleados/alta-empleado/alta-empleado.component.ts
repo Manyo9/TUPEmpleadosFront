@@ -17,6 +17,8 @@ export class AltaEmpleadoComponent implements OnInit, OnDestroy {
   formulario: FormGroup;
   subscription: Subscription = new Subscription();
   empleado: EmpleadoPostDTO;
+  readonly MAX_SUELDO: number = 9000000000.00
+  
   constructor(
     private formBuilder: FormBuilder,
     private empleadoService: EmpleadoService,
@@ -29,7 +31,7 @@ export class AltaEmpleadoComponent implements OnInit, OnDestroy {
       apellido: [, Validators.required],
       fechaNacimiento: [, Validators.required],
       fechaIngreso: [, Validators.required],
-      sueldoBruto: [, [Validators.required]],
+      sueldoBruto: [, [Validators.required, Validators.min(1), Validators.max(this.MAX_SUELDO)]],
       area: [, Validators.required]
     })
   }
