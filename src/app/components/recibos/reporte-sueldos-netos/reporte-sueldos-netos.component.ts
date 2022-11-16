@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ReciboReporteDTO } from 'src/app/models/ReciboReporteDTO';
 import { ReciboService } from 'src/app/services/recibo.service';
 import { SweetAlert } from 'sweetalert/typings/core';
@@ -14,12 +14,13 @@ const swal: SweetAlert = require('sweetalert');
 export class ReporteSueldosNetosComponent implements OnInit {
 
   formulario: FormGroup;
-  $reporte: Observable<ReciboReporteDTO[]>;
+  reporte: ReciboReporteDTO[]
   readonly MIN_ANIO: number = 1901;
+  subscription: Subscription = new Subscription();
 
   constructor(
-    private reciboService : ReciboService,
-    private formBuilder : FormBuilder
+    private reciboService: ReciboService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -30,13 +31,25 @@ export class ReporteSueldosNetosComponent implements OnInit {
   }
 
   generar(): void {
-    if(this.formulario.invalid){
+    if (this.formulario.invalid) {
       swal({ title: 'Atención!', text: `Revisá los parámetros antes de generar`, icon: 'warning' });
       return;
     }
-    this.$reporte =  this.reciboService.obtenerReporte(this.valueAnio, this.valueMes);
+    this.subscription.add(
+      this.reciboService.obtenerReporte(this.valueAnio, this.valueMes).subscribe({
+        next: (res: ReciboReporteDTO[]) => { this.reporte = res },
+        error: (e) => {
+          console.log(e);
+          if (e.error.error) {
+            swal({ title: 'Error!', text: `${e.error.error}: ${e.message}`, icon: 'error' });
+          } else {
+            swal({ title: 'Error!', text: `${e.error}`, icon: 'error' });
+          }
+        }
+      })
+    );
   }
-  
+
   get controlMes(): FormControl {
     return this.formulario.controls['mes'] as FormControl;
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ReciboSueldoNetoDTO } from 'src/app/models/ReciboSueldoNetoDTO';
 import { EmpleadoService } from 'src/app/services/empleado.service';
 import { SweetAlert } from 'sweetalert/typings/core';
@@ -14,10 +14,11 @@ const swal: SweetAlert = require('sweetalert');
 export class ListarRecibosComponent implements OnInit {
 
   formulario: FormGroup;
-  $listadoRecibos: Observable<ReciboSueldoNetoDTO[]>;
+  listadoRecibos: ReciboSueldoNetoDTO[];
+  subscription: Subscription = new Subscription();
   constructor(
-    private empleadoService : EmpleadoService,
-    private formBuilder : FormBuilder
+    private empleadoService: EmpleadoService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -27,11 +28,22 @@ export class ListarRecibosComponent implements OnInit {
   }
 
   buscar(): void {
-    if(this.formulario.invalid){
+    if (this.formulario.invalid) {
       swal({ title: 'Atención!', text: `Revisá el legajo antes de buscar.`, icon: 'warning' });
       return;
     }
-    this.$listadoRecibos =  this.empleadoService.obtenerRecibosPorLegajo(this.valueLegajo);
+    this.subscription.add(
+      this.empleadoService.obtenerRecibosPorLegajo(this.valueLegajo).subscribe({
+        next: (res: ReciboSueldoNetoDTO[]) => { this.listadoRecibos = res; },
+        error: (e) => {
+          if (e.error.error) {
+            swal({ title: 'Error!', text: `${e.error.error}: ${e.message}`, icon: 'error' });
+          } else {
+            swal({ title: 'Error!', text: `${e.error}`, icon: 'error' });
+          }
+        }
+      })
+    )
   }
 
   get controlLegajo(): FormControl {

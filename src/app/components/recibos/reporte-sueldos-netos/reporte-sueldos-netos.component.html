@@ -53,7 +53,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let r of $reporte | async">
+            <tr *ngFor="let r of reporte">
                 <th scope="row">{{r.area }}</th>
                 <td>{{r.total | currency : 'USD'}}</td>
                 <td>{{r.cantidadRecibos}}</td>

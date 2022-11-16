@@ -39,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let r of $listadoRecibos | async">
+            <tr *ngFor="let r of listadoRecibos">
                 <th scope="row">{{r.nroRecibo ? r.nroRecibo : '-' }}</th>
                 <td>{{r.mes}}</td>
                 <td>{{r.anio}}</td>
