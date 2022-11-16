@@ -10,5 +10,5 @@ Se hizo con Angular CLI version 14.1.3.
 - Montícoli Pablo Javier 113491
 
 ## Ejecutar
-  npm install
-  ng serve -o
+  `npm install`  
+  `ng serve -o`
